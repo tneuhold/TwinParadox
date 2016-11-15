@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         age1Text = (EditText) findViewById(R.id.age1);
         age2Text = (EditText) findViewById(R.id.age2);
         resultCalc = (TextView) findViewById(R.id.resultCalc);
+
+        //HALLO
     }
 
 
