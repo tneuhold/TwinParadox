@@ -1,5 +1,6 @@
 package at.fh.swengb.twinparadox;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText age1Text;
     private EditText age2Text;
     private TextView resultCalc;
-    private TextView problemText;
+    public String resultMessage;
 
 
     @Override
@@ -25,11 +26,13 @@ public class MainActivity extends AppCompatActivity {
         age2Text = (EditText) findViewById(R.id.age2);
         resultCalc = (TextView) findViewById(R.id.resultCalc);
 
-        //HALLO
     }
 
 
     public void calcAge (View view) {
+
+
+
 
         Double years = Double.parseDouble(yearsText.getText().toString());
         Double age1 = Double.parseDouble(age1Text.getText().toString());
@@ -41,8 +44,18 @@ public class MainActivity extends AppCompatActivity {
 
             Double afterSpace = years * 0.8 + age2;
             Double afterEarth = years + age1;
-            resultCalc.setText("After " + years + " years, brother 1, who stays at the earth, is " + afterEarth + " years old and brother 2, who was in space the last " + years + " years, is " + afterSpace + " years old.");
+            resultMessage = "After " + years + " years, brother 1, who stays at the earth, is " + afterEarth + " years old and brother 2, who was in space the last " + years + " years, is " + afterSpace + " years old.";
+            resultCalc.setText(resultMessage);
         }
+
+
+    }
+
+    public void about (View view) {
+
+        Intent intent = new Intent(this,AboutView.class);
+        intent.putExtra("data",resultMessage);
+        startActivity(intent);
 
     }
 
